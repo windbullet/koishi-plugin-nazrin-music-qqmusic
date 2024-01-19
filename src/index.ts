@@ -54,7 +54,7 @@ export function apply(ctx: Context) {
       data.name,
       data.cover,
       second,
-      +data.kbps.slice(0, data.kbps.lastIndexOf(0, "kbps")),
+      +data.kbps.slice(0, data.kbps.lastIndexOf("kbps")),
     )
   })
 }

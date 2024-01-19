@@ -1,8 +1,9 @@
 {
   "name": "koishi-plugin-nazrin-music-qqmusic",
   "description": "nazrin聚合搜索-QQ音乐支持",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "contributors": [
+    "windbullet <2536810643@qq.com>",
     "bstluo <1946831552@qq.com>"
   ],
   "main": "lib/index.js",
@@ -12,6 +13,11 @@
     "dist"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/windbullet/koishi-plugin-nazrin-music-qqmusic",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/windbullet/koishi-plugin-nazrin-music-qqmusic.git"
+  },
   "keywords": [
     "chatbot",
     "koishi",
@@ -19,5 +25,8 @@
   ],
   "peerDependencies": {
     "koishi": "^4.16.4"
+  },
+  "devDependencies": {
+    "koishi-plugin-nazrin-core": "^0.1.10"
   }
 }
