@@ -1,8 +1,5 @@
-import { TIMEOUT } from 'dns'
 import { Context, Schema } from 'koishi'
-
 import {} from 'koishi-plugin-nazrin-core'
-import { platform } from 'os'
 
 export const inject = ['nazrin']
 
@@ -46,15 +43,21 @@ export function apply(ctx: Context) {
 
   ctx.on('nazrin/parse_music', async (ctx, platform, url, mid) => {
     if (platform !== thisPlatform) {return}
-    let {data} = await ctx.http.get(`https://api.xingzhige.com/API/QQmusicVIP/?mid=${mid}`)
-    let second = (+data.interval.slice(0, data.interval.lastIndexOf("分")) * 60) + data.interval.slice(data.interval.lastIndexOf("分") + 1, data.interval.lastIndexOf("秒"))
-    ctx.emit('nazrin/parse_over', 
-      data.src,
-      data.songname,
-      data.name,
-      data.cover,
-      second,
-      +data.kbps.slice(0, data.kbps.lastIndexOf("kbps")),
-    )
+    let result = await ctx.http.get(`https://api.xingzhige.com/API/QQmusicVIP/?mid=${mid}`)
+    if (result.code !== 0) {
+      ctx.emit('nazrin/parse_error', result.msg)
+    } else {
+      let {data} = result
+      let second = (+data.interval.slice(0, data.interval.lastIndexOf("分")) * 60) + data.interval.slice(data.interval.lastIndexOf("分") + 1, data.interval.lastIndexOf("秒"))
+      ctx.emit('nazrin/parse_over', 
+        data.src,
+        data.songname,
+        data.name,
+        data.cover,
+        second,
+        +data.kbps.slice(0, data.kbps.lastIndexOf("kbps")),
+      )
+    }
+    
   })
 }

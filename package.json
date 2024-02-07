@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-nazrin-music-qqmusic",
   "description": "nazrin聚合搜索-QQ音乐支持",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "contributors": [
     "windbullet <2536810643@qq.com>",
     "bstluo <1946831552@qq.com>"
@@ -24,9 +24,9 @@
     "plugin"
   ],
   "peerDependencies": {
-    "koishi": "^4.16.4"
+    "koishi": "^4.16.8"
   },
   "devDependencies": {
-    "koishi-plugin-nazrin-core": "^0.1.10"
+    "koishi-plugin-nazrin-core": "^0.1.19"
   }
 }
